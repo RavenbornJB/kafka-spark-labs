@@ -1,4 +1,4 @@
-# Lab 6: Writing to Kafka with code
+# Lab 7: Reading from Kafka with code
 
 ### Disclaimer
 
@@ -6,24 +6,18 @@ In the final version here on GitHub, we use `data/sample.csv` instead of `data/t
 
 ### Report
 
-Running the cluster still looks the same as in the previous lab:
+Building and running the containers:
 
-![running cluster](screenshots/run-cluster.jpg)
+![sender and receiver](screenshots/sender-and-receiver.jpg)
 
-Of course, to shut it down you can run `shutdown-cluster.sh`.
+docker ps:
 
----
+![working containers](screenshots/working-containers.jpg)
 
-With `build_sender.sh` you can buld and run the producer program.
+Logs after a few minutes:
 
-![container launch](screenshots/container-launch.jpg)
+![log files](screenshots/log-files.jpg)
 
----
+Finally, the content of a log file:
 
-Finally, the output from the console consumer client is correct:
-
-![consumer outputs](screenshots/consumer-output.jpg)
-
-And leaving it up for ~5 minutes doesn't break it.
-
-![after 5 minutes](screenshots/after-5-minutes.jpg)
+![log content](screenshots/log-content.jpg)

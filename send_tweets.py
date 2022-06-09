@@ -9,10 +9,10 @@ def send_tweets(filename, producer):
         csv_reader = csv.DictReader(f)
 
         for tweet in csv_reader:
-            payload = [tweet['text'], tweet['author_id'], datetime.now().strftime("%d_%m_%Y_%H_%M")]
+            payload = [tweet['text'], tweet['author_id'], datetime.now().strftime("%d_%m_%Y_%H_%M_%S")]
 
             producer.send('tweets', str(payload).encode('utf-8'))
-            time.sleep(1/15)
+            time.sleep(1)
 
 
 if __name__ == '__main__':
