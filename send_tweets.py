@@ -16,6 +16,6 @@ def send_tweets(filename, producer):
 if __name__ == '__main__':
     prod = KafkaProducer(bootstrap_servers='kafka-server')
 
-    send_tweets('/opt/app/data/sample.csv', prod)
+    send_tweets('/opt/app/data/twcs.csv', prod)
 
     prod.close()
