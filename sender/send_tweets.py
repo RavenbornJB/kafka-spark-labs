@@ -12,7 +12,7 @@ def send_tweets(filename, producer):
             payload = [tweet['text'], tweet['author_id'], datetime.now().strftime("%d_%m_%Y_%H_%M_%S")]
 
             producer.send('tweets', str(payload).encode('utf-8'))
-            time.sleep(1)
+            time.sleep(1/15)
 
 
 if __name__ == '__main__':
