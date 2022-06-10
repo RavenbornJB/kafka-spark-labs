@@ -4,13 +4,11 @@ from datetime import datetime
 import time
 
 
-def send_tweets(filename, producer):
+def send_messages(filename, producer):
     with open(filename) as f:
         csv_reader = csv.DictReader(f)
 
-        for tweet in csv_reader:
-            payload = [tweet['text'], tweet['author_id'], datetime.now().strftime("%d_%m_%Y_%H_%M_%S")]
-
+        for transaction in csv_reader:
             producer.send('tweets', str(payload).encode('utf-8'))
             time.sleep(1)
 
@@ -18,6 +16,6 @@ def send_tweets(filename, producer):
 if __name__ == '__main__':
     prod = KafkaProducer(bootstrap_servers='kafka-server')
 
-    send_tweets('/opt/app/data/twcs.csv', prod)
+    send_messages('/opt/app/data/PS_20174392719_1491204439457_log.csv', prod)
 
     prod.close()
