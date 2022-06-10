@@ -2,7 +2,7 @@
 
 ### Disclaimer
 
-In the final version here on GitHub, we use `data/sample.csv` instead of `data/twcs.csv` because of file size constraints. In the report below, everything is demonstrated using `data/twcs.csv`.
+In the final version here on GitHub, we use `sender/data/sample.csv` instead of `sender/data/twcs.csv` because of file size constraints. In the report below, everything is demonstrated using `sender/data/twcs.csv`.
 
 ### Report
 
