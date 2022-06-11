@@ -1,29 +1,19 @@
 from kafka import KafkaConsumer
+from cassandra_client import CassandraClient
 from ast import literal_eval
-import csv
 
 
 if __name__ == '__main__':
-    cons = KafkaConsumer('tweets', bootstrap_servers='kafka-server')
+    client = CassandraClient('cassandra-server', 9042, 'lab')
+    client.connect()
 
-    minute = None
-    minute_tweets = []
-    for message in cons:
-        text, author_id, created_at = payload = literal_eval(message.value.decode('utf-8'))
-        cur_minute = created_at[:-3]
-        if not minute:  # init minute on first pass
-            minute = cur_minute
+    cons = KafkaConsumer('fraud', bootstrap_servers='kafka-server')
 
-        if minute != cur_minute:  # new minute
-            with open(f'/tweet_logs/tweets_{minute}.csv', 'w') as f:
-                csv_writer = csv.writer(f)
-                csv_writer.writerow(['author_id', 'created_at', 'text'])
-                csv_writer.writerows(minute_tweets)
-
-                # update sentinel value
-                minute = cur_minute
-                minute_tweets = []
-
-        minute_tweets.append(payload)
-
-    cons.close()
+    try:
+        for message in cons:
+            payload = literal_eval(message.value.decode('utf-8'))
+            client.insert_transaction(payload)
+    except KeyboardInterrupt as e:  # only way this is gonna end, other than the server going down
+        client.shutdown()
+        cons.close()
+        raise e

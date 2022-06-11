@@ -18,13 +18,13 @@ def send_messages(filename, producer):
             payload = [
                 transaction['nameOrig'],
                 transaction['nameDest'],
-                transaction['amount'],
+                float(transaction['amount']),
                 transaction_date.strftime("%Y-%m-%d"),
-                transaction['isFraud']
+                'true' if int(transaction['isFraud']) else 'false'
             ]
 
             producer.send('fraud', str(payload).encode('utf-8'))
-            time.sleep(1)
+            time.sleep(1/30)
 
 
 if __name__ == '__main__':

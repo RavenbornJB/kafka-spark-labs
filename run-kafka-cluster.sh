@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 docker network create app-network
 docker run -d --name zookeeper-server --network app-network -e ALLOW_ANONYMOUS_LOGIN=yes bitnami/zookeeper:latest

@@ -33,6 +33,6 @@ CREATE TABLE user_date_sum (
     transaction_date date,
     fraud boolean,
     PRIMARY KEY (rid, transaction_date, sid)
-) WITH CLUSTERING ORDER BY (transaction_date ASC, rid ASC);
+) WITH CLUSTERING ORDER BY (transaction_date ASC, sid ASC);
 
 -- SELECT SUM(amount) FROM user_date_sum WHERE rid='qwer' AND transaction_date>='2011-02-05' AND transaction_date<='2011-02-06';
