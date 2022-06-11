@@ -1,4 +1,4 @@
-# Lab 7: Reading from Kafka with code
+# Lab 8: Using Cassandra and Kafka in an application
 
 ### Disclaimer
 
