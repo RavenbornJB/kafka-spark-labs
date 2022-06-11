@@ -1,3 +1,7 @@
-# Big Data lab repository (Kafka and Spark labs)
+# Lab 9: Installing Spark
 
-Check out various branches for each lab.
+### Report
+
+Running Spark through Docker, I was able to get the number of rows of the file:
+
+![output](output.jpg)
