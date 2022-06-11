@@ -2,7 +2,7 @@
 
 ### Disclaimer
 
-In the final version here on GitHub, we use `data/sample.csv` instead of `data/twcs.csv` because of file size constraints. In the report below, everything is demonstrated using `data/twcs.csv`.
+I did not upload `sender/data/data.csv` to GitHub. Put the data at that path to replicate the results.
 
 ### Report
 
@@ -10,14 +10,14 @@ Building and running the containers:
 
 ![sender and receiver](screenshots/sender-and-receiver.jpg)
 
-docker ps:
+Record counts in Cassandra after running the containers for 30+ minutes:
 
-![working containers](screenshots/working-containers.jpg)
+![db record counts](screenshots/db-record-counts.jpg)
 
-Logs after a few minutes:
+You can see that the `user_fraudulent` table has far less entries - since it only contains fraudulent transactions.
 
-![log files](screenshots/log-files.jpg)
+---
 
-Finally, the content of a log file:
+When running the demo, I couldn't find a sender that had multiple transactions to his name (even though the data was accumulating for 30+ minutes). I found such a user later (you can see him in the third query), but in the first 2 queries I added some transactions artificially, so we could at least test the "top-3" idea in the 2nd query.
 
-![log content](screenshots/log-content.jpg)
+![api demo](screenshots/api-demo.jpg)
